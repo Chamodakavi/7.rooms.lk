@@ -6,9 +6,16 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
+import { useRouter } from "next/navigation";
 
-function PropertCard() {
+interface p {
+  id: number;
+}
+
+function PropertCard({ id }: p) {
   const theme = useTheme();
+  const router = useRouter();
+
   return (
     <Card sx={{ width: { md: "100%", xs: "80%", sm: "100%" } }}>
       <img
@@ -25,7 +32,9 @@ function PropertCard() {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="large">Reserve</Button>
+        <Button size="large" onClick={() => router.push(`/property/${id}`)}>
+          Reserve
+        </Button>
       </CardActions>
     </Card>
   );
